@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RIC – Rumah Ide Coffee (Premium)</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --color-primary: #6f4e37;  /* coklat kopi (60%)  */
+      --color-secondary: #1a1a1a;/* hitam (30%)       */
+      --color-accent: #ffffff;   /* putih (10%)       */
+      --color-gold: #d4a373;
+    }
+
+    * {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #f8f5f2;
+      color: var(--color-secondary);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+    }
+
+    .text-primary-custom {
+      color: var(--color-primary);
+    }
+
+    /* NAVBAR PREMIUM */
+    .navbar {
+      background: rgba(26, 26, 26, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 16px 0;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--color-accent) !important;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.8) !important;
+      font-weight: 400;
+      margin-left: 18px;
+      transition: color 0.3s;
+      font-size: 0.95rem;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--color-gold) !important;
+    }
+
+    .btn-nav-outline {
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      color: var(--color-accent);
+      font-size: 0.9rem;
+      padding: 6px 18px;
+      transition: all 0.3s;
+    }
+
+    .btn-nav-outline:hover {
+      background-color: var(--color-gold);
+      color: #000;
+      border-color: var(--color-gold);
+    }
+
+    /* HERO */
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: #000;
+      color: var(--color-accent);
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url(background.jpg);   /* GANTI URL BG KOPI DI ATAS SESUAI FOTO ANDA */
+      background-size: cover;
+      background-position: center;
+      opacity: 0.45;
+      z-index: 0;
+      transform: scale(1.05);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9));
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title {
+      font-size: clamp(2.6rem, 4.2vw, 3.8rem);
+      margin-bottom: 1rem;
+      text-shadow: 0 6px 24px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      max-width: 540px;
+      margin: 0 auto 1.8rem auto;
+      opacity: 0.9;
+    }
+
+    .badge-hero {
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 1rem;
+    }
+
+    .btn-main {
+      background-color: var(--color-primary);
+      color: var(--color-accent);
+      padding: 12px 30px;
+      border-radius: 999px;
+      border: 2px solid var(--color-primary);
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+      transition: all 0.3s ease;
+    }
+
+    .btn-main:hover {
+      background-color: transparent;
+      color: var(--color-accent);
+      border-color: var(--color-gold);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 38px rgba(0, 0, 0, 0.7);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      color: var(--color-accent);
+      padding: 11px 22px;
+      font-weight: 500;
+      margin-left: 10px;
+      transition: all 0.3s;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--color-gold);
+    }
+
+    /* SECTION HEADER */
+    .section-title {
+      text-align: center;
+      margin-bottom: 2.8rem;
+    }
+
+    .section-title h5 {
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+    }
+
+    .section-title h2 {
+      font-weight: 700;
+      font-size: 2rem;
+    }
+
+    .section-decor {
+      width: 70px;
+      height: 3px;
+      background: var(--color-primary);
+      margin: 8px auto 0;
+      border-radius: 999px;
+    }
+
+    /* MENU CARDS PREMIUM */
+    .card-menu {
+      border: none;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.06);
+      transition: all 0.35s ease;
+      position: relative;
+    }
+
+    .card-menu img {
+      height: 220px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .card-menu:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(111, 78, 55, 0.25);
+    }
+
+    .menu-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(0, 0, 0, 0.75);
+      color: #fff;
+      font-size: 0.7rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ABOUT */
+    .about-section {
+      background-color: var(--color-primary);
+      color: var(--color-accent);
+    }
+
+    .about-icon {
+      font-size: 1.6rem;
+      margin-right: 12px;
+    }
+
+    /* GALERI + LIGHTBOX */
+    .gallery-img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery-img:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    /* GOOGLE FORM WRAPPER */
+    .form-wrapper {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+      padding: 22px;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--color-secondary);
+      color: var(--color-accent);
+      padding: 40px 0 18px;
+    }
+
+    .footer-brand {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .social-icon {
+      font-size: 1.5rem;
+      color: var(--color-accent);
+      margin-right: 14px;
+      transition: all 0.3s;
+    }
+
+    .social-icon:hover {
+      color: var(--color-gold);
+      transform: translateY(-2px);
+    }
+
+    .footer-link {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+    }
+
+    .footer-link:hover {
+      color: var(--color-gold);
+    }
+
+    /* SCROLL ANIMASI SIMPLE (tanpa lib tambahan) */
+    [data-fade] {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.7s ease;
+    }
+
+    [data-fade].visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.3rem;
+      }
+      .navbar {
+        background: rgba(26, 26, 26, 0.95);
+      }
+    }
+  </style>
+</head>
+<body id="home">
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <!-- BRAND ke logo.html -->
+   <a class="navbar-brand d-flex align-items-center" href="logo.html">
+  <img src="logo.jpg" 
+       alt="RIC Logo"
+       style="
+         width: 38px; 
+         height: 38px; 
+         object-fit: cover; 
+         border-radius: 50%; 
+         margin-right: 10px;
+         border: 1px solid rgba(255,255,255,0.6);
+       ">
+  <span>rumah ide coffee</span>
+</a>
+
+      <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav align-items-lg-center">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">Tentang</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gallery">Galeri</a></li>
+          <li class="nav-item"><a class="nav-link" href="#feedback">Kritik & Saran</a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <!-- GANTI LINK WA DI SINI -->
+            <a href="https://wa.me/6281234567890" target="_blank" class="btn-nav-outline">
+              <i class="bi bi-whatsapp me-1"></i> Kontak
+            </a>
+            
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero-section" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="container hero-content text-center">
+      <div class="badge-hero">
+        <i class="bi bi-star-fill text-warning"></i>
+        𝘛𝘦𝘮𝘱𝘢𝘵𝘮𝘶 𝘣𝘦𝘳𝘵𝘦𝘥𝘶𝘩, 𝘵𝘦𝘮𝘢𝘯𝘮𝘶 𝘣𝘦𝘳𝘵𝘦𝘮𝘱𝘶𝘩.
+      </div>
+      <h1 class="hero-title">Nikmati Secangkir Inspirasi di Rumah Ide Coffee</h1>
+      <p class="hero-subtitle">
+        Tempat di mana aroma kopi segar bertemu dengan ide-ide besar. Duduk, rileks, dan biarkan setiap tegukan membawamu pada inspirasi baru.
+      </p>
+      <div class="d-flex justify-content-center mt-2">
+        <a href="#menu" class="btn-main">
+          <i class="bi bi-cup-hot me-2"></i>Lihat Menu
+        </a>
+        <!-- GANTI LINK WA DI SINI JUGA -->
+        <a href="https://wa.me/6281234567890" target="_blank" class="btn-ghost">
+          <i class="bi bi-whatsapp me-1"></i> Hubungi Kami
+        </a>
+      </div>
+      <div class="d-flex justify-content-center mt-2">
+     <a href="https://food.grab.com/id/en/restaurant/rumah-ide-coffee-pulo-brayan-darat-i-delivery/6-C7LKRP5JJ3KGEE?sourceID=20251205_232247_9601cd9163e4461ebca5d0e1475f2acc_MEXMPS&nameSlug=online-delivery&id=6-C7LKRP5JJ3KGEE"
+   target="_blank"
+   class="btn btn-success rounded-pill px-4"
+   style="background-color:#00B14F; border:none;">
+    <img src="grabfood-logo.png" alt="GrabFood" 
+         style="height:22px; margin-right:8px;">
+    Order via GrabFood
+</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MENU -->
+  <section id="menu" class="py-5">
+    <div class="container py-4" data-fade>
+      <div class="section-title">
+        <h5>PILIHAN TERBAIK</h5>
+        <h2>Menu Unggulan RIC</h2>
+        <div class="section-decor"></div>
+      </div>
+
+      <div class="row g-4">
+        <!-- Menu 1 -->
+        <div class="col-md-4">
+          <div class="card-menu h-100">
+            <!-- GANTI GAMBAR MINUMAN -->
+            <span class="menu-badge">Best Seller</span>
+            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="Espresso" />
+            <div class="p-4 text-center">
+              <h5 class="fw-bold mb-1">Signature Espresso</h5>
+              <p class="text-muted small mb-2">
+                Ekstraksi penuh dari biji kopi pilihan, rasa kuat dengan aftertaste manis.
+              </p>
+              <h6 class="text-primary-custom fw-bold mb-1">Rp 25.000</h6>
+            </div>
+          </div>
+        </div>
+
+        <!-- Menu 2 -->
+        <div class="col-md-4">
+          <div class="card-menu h-100">
+            <span class="menu-badge">Creamy</span>
+            <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80" alt="Latte" />
+            <div class="p-4 text-center">
+              <h5 class="fw-bold mb-1">Velvet Latte</h5>
+              <p class="text-muted small mb-2">
+                Perpaduan espresso dan susu steamed yang halus dengan latte art cantik.
+              </p>
+              <h6 class="text-primary-custom fw-bold mb-1">Rp 32.000</h6>
+            </div>
+          </div>
+        </div>
+
+        <!-- Menu 3 -->
+        <div class="col-md-4">
+          <div class="card-menu h-100">
+            <span class="menu-badge">New</span>
+            <img src="https://images.unsplash.com/photo-1534040385115-33dcb3acba5b?auto=format&fit=crop&w=600&q=80" alt="Cappuccino" />
+            <div class="p-4 text-center">
+              <h5 class="fw-bold mb-1">Classic Cappuccino</h5>
+              <p class="text-muted small mb-2">
+                Espresso, susu panas, dan foam tebal dengan taburan cocoa.
+              </p>
+              <h6 class="text-primary-custom fw-bold mb-1">Rp 30.000</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-5">
+    
+         <a href="https://food.grab.com/id/en/restaurant/rumah-ide-coffee-pulo-brayan-darat-i-delivery/6-C7LKRP5JJ3KGEE?sourceID=20251205_232247_9601cd9163e4461ebca5d0e1475f2acc_MEXMPS&nameSlug=online-delivery&id=6-C7LKRP5JJ3KGEE"class="btn btn-success btn-lg rounded-pill px-5 shadow"
+   style="background-color:#00B14F; border:none;">
+    <img src="grabfood-logo.png" alt="GrabFood" 
+         style="height:22px; margin-right:8px;">
+    Order via GrabFood
+</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about-section py-5">
+    <div class="container py-4" data-fade>
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <!-- GANTI GAMBAR INTERIOR -->
+          <img src="suasana3.jpg" class="img-fluid rounded-4 shadow-lg" alt="Interior Cafe" />
+        </div>
+        <div class="col-lg-6 ps-lg-5">
+          <h5 class="text-warning text-uppercase mb-2" style="letter-spacing:0.16em;">Tentang Kami</h5>
+          <h2 class="fw-bold mb-3">Lebih dari Sekadar Kedai Kopi</h2>
+          <p class="mb-3" style="font-size:0.98rem; opacity:0.92;">
+            Rumah Ide Coffee (RIC) dirancang sebagai ruang berkumpul bagi para pekerja kreatif, mahasiswa, dan semua penikmat kopi yang ingin mencari suasana tenang namun tetap produktif.
+          </p>
+          <p class="mb-4" style="font-size:0.95rem; opacity:0.85;">
+            Dengan biji kopi lokal pilihan, barista berpengalaman, dan ambience yang hangat, kami percaya setiap kunjungan adalah awal dari ide baru yang besar.
+          </p>
+
+          <div class="row g-3">
+            <div class="col-sm-6 d-flex align-items-center">
+              <i class="bi bi-wifi about-icon"></i>
+              <div>
+                <h6 class="mb-0">Free High-Speed Wi-Fi</h6>
+                <small>Tempat ideal untuk kerja, belajar, dan meeting.</small>
+              </div>
+            </div>
+            <div class="col-sm-6 d-flex align-items-center">
+              <i class="bi bi-music-note-beamed about-icon"></i>
+              <div>
+                <h6 class="mb-0">Chill Music</h6>
+                <small>Playlist yang mendukung fokus dan kenyamanan.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="py-5 bg-white">
+    <div class="container py-4" data-fade>
+      <div class="section-title">
+        <h5>SUASANA</h5>
+        <h2>Galeri Rumah Ide Coffee</h2>
+        <div class="section-decor"></div>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-md-4 col-6">
+          <!-- GANTI GAMBAR -->
+          <img src="suasana1.jpg" class="gallery-img" alt="Mesin Kopi" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1200&q=80" />
+        </div>
+        <div class="col-md-4 col-6">
+          <img src="suasana2.jpg" class="gallery-img" alt="Suasana Cafe" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=1200&q=80" />
+        </div>
+        <div class="col-md-4 col-12">
+          <img src="suasana3.jpg" class="gallery-img" alt="Biji Kopi" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL GALLERY -->
+  <div class="modal fade" id="galleryModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark border-0">
+        <button type="button" class="btn-close btn-close-white ms-auto me-2 mt-2" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-body p-0">
+          <img id="galleryModalImg" src="" alt="Galeri RIC" class="w-100" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KRITIK & SARAN (GOOGLE FORM) -->
+  <section id="feedback" class="py-5" style="background-color:#f2ebe6;">
+    <div class="container py-4" data-fade>
+      <div class="section-title">
+        <h5>MASUKAN ANDA</h5>
+        <h2>Kritik & Saran</h2>
+        <div class="section-decor"></div>
+        <p class="text-muted mt-3" style="max-width:600px;margin:0 auto;">
+          Kami sangat terbuka terhadap semua masukan untuk meningkatkan kualitas rasa, pelayanan, dan suasana di Rumah Ide Coffee.
+        </p>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="form-wrapper">
+            <!-- GANTI LINK GOOGLE FORM DI ATRIBUT SRC -->
+            <iframe
+              src="https://docs.google.com/forms/d/e/FORM_ID_ANDA/viewform?embedded=true"
+              width="100%"
+              height="900"
+              frameborder="0"
+              marginheight="0"
+              marginwidth="0"
+            >
+              Memuat…
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="row mb-3">
+        <div class="col-md-4 mb-3 mb-md-0">
+          <div class="footer-brand mb-2">RIC</div>
+          <p class="small mb-2">Rumah Ide Coffee</p>
+          <p class="small mb-0 opacity-75">
+           Alamat lengkap untuk Rumah ide coffee adalah Jl. Bilal Ujung, Pulo Brayan Darat I, Kec. Medan Tim., <br />
+            Kota Medan, Sumatera Utara 20239.
+          </p>
+        </div>
+        <div class="col-md-4 mb-3 mb-md-0">
+          <h6 class="mb-2">Jam Operasional</h6>
+          <p class="small mb-0 opacity-75">
+            Senin–Minggu: 08.00 – 21.00<br />
+
+          </p>
+        </div>
+        <div class="col-md-4">
+          <h6 class="mb-2">Ikuti Kami</h6>
+          <div class="mb-2">
+            <!-- GANTI LINK SOSMED -->
+            <a href="https://www.instagram.com/rumahidecoffee/" class="social-icon"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.threads.com/@rumahidecoffee" class="social-icon"><i class="bi bi-threads"></i></a>
+            <a href="https://wa.me/6281234567890" class="social-icon"><i class="bi bi-whatsapp"></i></a>
+            <!-- LOGO GRABFOOD -->
+<a href="https://food.grab.com/id/en/restaurant/rumah-ide-coffee-pulo-brayan-darat-i-delivery/6-C7LKRP5JJ3KGEE?sourceID=20251205_232247_9601cd9163e4461ebca5d0e1475f2acc_MEXMPS&nameSlug=online-delivery&id=6-C7LKRP5JJ3KGEE" class="social-icon">
+  <img src="grabfood-logo.png" 
+       alt="GrabFood" 
+       style="height:22px; width:auto; filter:brightness(100%);">
+</a>
+          </div>
+          <a href="#home" class="footer-link small"><i class="bi bi-arrow-up-circle me-1"></i> Kembali ke atas</a>
+        </div>
+      </div>
+
+      <hr class="border-secondary" />
+
+      <div class="text-center">
+        <p class="small mb-0 opacity-75">
+          © 2025 Rumah Ide Coffee. All Rights Reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Navbar shrink on scroll
+    window.addEventListener("scroll", function () {
+      const navbar = document.querySelector(".navbar");
+      if (window.scrollY > 50) {
+        navbar.style.background = "rgba(26, 26, 26, 0.96)";
+        navbar.style.padding = "10px 0";
+      } else {
+        navbar.style.background = "rgba(26, 26, 26, 0.7)";
+        navbar.style.padding = "16px 0";
+      }
+    });
+
+    // Gallery modal
+    const galleryModal = document.getElementById("galleryModal");
+    galleryModal.addEventListener("show.bs.modal", function (event) {
+      const img = event.relatedTarget;
+      const src = img.getAttribute("data-img");
+      document.getElementById("galleryModalImg").src = src;
+    });
+
+    // Simple scroll animation
+    const fadeEls = document.querySelectorAll("[data-fade]");
+    const onScroll = () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      fadeEls.forEach((el) => {
+        const boxTop = el.getBoundingClientRect().top;
+        if (boxTop < triggerBottom) el.classList.add("visible");
+      });
+    };
+    window.addEventListener("scroll", onScroll);
+    window.addEventListener("load", onScroll);
+  </script>
+</body>
+</html>
